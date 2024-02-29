@@ -25,6 +25,7 @@ class Notebook {
     private String os;
     private String color;
 
+
     public Notebook(String vendor, int ram, int volumeHDD, String os, String color) {
         this.vendor = vendor;
         this.ram = ram;
@@ -63,5 +64,50 @@ class Notebook {
         this.color = color;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Notebook [vendor=" + vendor + ", ram=" + ram + ", volumeHDD=" + volumeHDD + ", os=" + os + ", color="
+                + color + "]";
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Notebook other = (Notebook) obj;
+        if (vendor == null) {
+            if (other.vendor != null)
+                return false;
+        } else if (!vendor.equals(other.vendor))
+            return false;
+        if (ram != other.ram)
+            return false;
+        if (volumeHDD != other.volumeHDD)
+            return false;
+        if (os == null) {
+            if (other.os != null)
+                return false;
+        } else if (!os.equals(other.os))
+            return false;
+        if (color == null) {
+            if (other.color != null)
+                return false;
+        } else if (!color.equals(other.color))
+            return false;
+        return true;
+    }
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((vendor == null) ? 0 : vendor.hashCode());
+        result = prime * result + ram;
+        result = prime * result + volumeHDD;
+        result = prime * result + ((os == null) ? 0 : os.hashCode());
+        result = prime * result + ((color == null) ? 0 : color.hashCode());
+        return result;
+    }
 }
