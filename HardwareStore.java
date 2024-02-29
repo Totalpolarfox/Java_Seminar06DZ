@@ -12,10 +12,20 @@
 // -Отфильтровать ноутбуки их первоначального множества и вывести проходящие по условиям.
 
 import java.util.*;
+
 public class HardwareStore {
     public static void main(String[] args) {
-        
-    }
+        Set<Notebook> notebooks = new HashSet<>();
+        notebooks.add(new Notebook("Apple", 16, 512, "macOS", "white"));
+        notebooks.add(new Notebook("Maibenben", 8, 256, "Linux", "silver"));
+        notebooks.add(new Notebook("ASUS", 16, 1000, "Windows", "white"));
+        notebooks.add(new Notebook("ASUS", 8, 256, "Windows", "black"));
+        notebooks.add(new Notebook("Apple", 16, 1000, "macOS", "silver"));
+        notebooks.add(new Notebook("Lenovo", 16, 512, "Linux", "black"));
+        notebooks.add(new Notebook("Huawei", 8, 256, "Windows", "black"));
+        notebooks.add(new Notebook("Maibenben", 8, 512, "Linux", "silver"));
+        notebooks.add(new Notebook("ASUS", 16, 512, "Windows", "black"));
+    } 
 }
 
 class Notebook {
