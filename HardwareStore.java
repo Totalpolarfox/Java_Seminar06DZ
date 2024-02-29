@@ -25,6 +25,9 @@ public class HardwareStore {
         notebooks.add(new Notebook("Huawei", 8, 256, "Windows", "black"));
         notebooks.add(new Notebook("Maibenben", 8, 512, "Linux", "silver"));
         notebooks.add(new Notebook("ASUS", 16, 512, "Windows", "black"));
+
+        Map<Integer, Object> filteringCriteria = requestFilteringCriteria();
+        Set<Notebook> result = filteringNotebooks(notebooks, filteringCriteria);
     } 
 
     private static Map<Integer, Object> requestFilteringCriteria() {
