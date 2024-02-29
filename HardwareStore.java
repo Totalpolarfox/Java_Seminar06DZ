@@ -26,6 +26,12 @@ public class HardwareStore {
         notebooks.add(new Notebook("Maibenben", 8, 512, "Linux", "silver"));
         notebooks.add(new Notebook("ASUS", 16, 512, "Windows", "black"));
     } 
+
+    private static Map<Integer, Object> requestFilteringCriteria() {
+        Map<Integer, Object> criteries = new HashMap<>();
+        Scanner scanner = new Scanner(System.in);
+        
+    }
 }
 
 class Notebook {
