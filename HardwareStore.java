@@ -38,6 +38,7 @@ public class HardwareStore {
         System.out.println("4 - операционная система");
         System.out.println("5 - цвет");
 
+        int selectionCriteria = scanner.nextInt();
         switch (selectionCriteria) {
             case 1:
                 System.out.println("Введите производителя:");
@@ -65,8 +66,16 @@ public class HardwareStore {
                 criteries.put(5, color);
                 break;   
             default:
+                System.out.println("Неверный выбор критерия");
                 break;
         }
+        return criteries;
+    }
+
+    private static Set<Notebook> filteringNotebooks(Set<Notebook> notebooks, Map<Integer, Object> criteries) {
+        Set<Notebook> result = new HashSet<>();
+
+        return result;
 
     }
 }
