@@ -19,5 +19,11 @@ public class HardwareStore {
 }
 
 class Notebook {
+    private String vendor;
+    private int ram;
+    private int volumeHDD;
+    private String os;
+    private String color;
 
+    
 }
