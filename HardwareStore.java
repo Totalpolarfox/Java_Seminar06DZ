@@ -24,6 +24,37 @@ class Notebook {
     private int volumeHDD;
     private String os;
     private String color;
+    
+    public String getVendor() {
+        return vendor;
+    }
+    public void setVendor(String vendor) {
+        this.vendor = vendor;
+    }
+    public int getRam() {
+        return ram;
+    }
+    public void setRam(int ram) {
+        this.ram = ram;
+    }
+    public int getVolumeHDD() {
+        return volumeHDD;
+    }
+    public void setVolumeHDD(int volumeHDD) {
+        this.volumeHDD = volumeHDD;
+    }
+    public String getOs() {
+        return os;
+    }
+    public void setOs(String os) {
+        this.os = os;
+    }
+    public String getColor() {
+        return color;
+    }
+    public void setColor(String color) {
+        this.color = color;
+    }
 
     
 }
