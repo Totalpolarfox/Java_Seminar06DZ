@@ -30,7 +30,14 @@ public class HardwareStore {
     private static Map<Integer, Object> requestFilteringCriteria() {
         Map<Integer, Object> criteries = new HashMap<>();
         Scanner scanner = new Scanner(System.in);
-        
+
+        System.out.println("Введите цифру, соответствующую необходимому критерию:");
+        System.out.println("1 - производитель");
+        System.out.println("2 - объём оперативной памяти");
+        System.out.println("3 - объём HDD");
+        System.out.println("4 - операционная система");
+        System.out.println("5 - цвет");
+
     }
 }
 
