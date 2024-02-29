@@ -75,6 +75,49 @@ public class HardwareStore {
     private static Set<Notebook> filteringNotebooks(Set<Notebook> notebooks, Map<Integer, Object> criteries) {
         Set<Notebook> result = new HashSet<>();
 
+        for (Notebook notebook : notebooks) {
+            boolean passesCondition = true;
+
+            for (Map.Entry<Integer, Object> entry : criteries.entrySet()) {
+                int criteria = entry.getKey();
+                Object value = entry.getValue();
+
+                switch (criteria) {
+                    case 1:
+                        if (notebook.getVendor().equals(value)) {
+                            passesCondition = false;
+                        }
+                        break;
+                    case 2:
+                        if (notebook.getRam() < (int) value) {
+                            passesCondition = false;
+                        }
+                        break;
+                    case 3:
+                        if (notebook.getVolumeHDD() < (int) value) {
+                            passesCondition = false;
+                        }
+                        break;
+                    case 4:
+                        if (notebook.getOs().equals(value)) {
+                            passesCondition = false;
+                        }
+                        break;            
+                    case 5:
+                        if (notebook.getColor().equals(value)) {
+                            passesCondition = false;
+                        }
+                        break;   
+                    default:
+                        passesCondition = false;
+                        break;
+                }
+                
+            }
+            if (passesCondition) {
+                result.add(notebook);
+            }
+        }
         return result;
 
     }
