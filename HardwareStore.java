@@ -24,7 +24,14 @@ class Notebook {
     private int volumeHDD;
     private String os;
     private String color;
-    
+
+    public Notebook(String vendor, int ram, int volumeHDD, String os, String color) {
+        this.vendor = vendor;
+        this.ram = ram;
+        this.volumeHDD = volumeHDD;
+        this.os = os;
+        this.color = color;
+    }
     public String getVendor() {
         return vendor;
     }
