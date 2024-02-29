@@ -16,18 +16,23 @@ import java.util.*;
 public class HardwareStore {
     public static void main(String[] args) {
         Set<Notebook> notebooks = new HashSet<>();
-        notebooks.add(new Notebook("Apple", 16, 512, "macOS", "white"));
-        notebooks.add(new Notebook("Maibenben", 8, 256, "Linux", "silver"));
-        notebooks.add(new Notebook("ASUS", 16, 1000, "Windows", "white"));
-        notebooks.add(new Notebook("ASUS", 8, 256, "Windows", "black"));
-        notebooks.add(new Notebook("Apple", 16, 1000, "macOS", "silver"));
-        notebooks.add(new Notebook("Lenovo", 16, 512, "Linux", "black"));
-        notebooks.add(new Notebook("Huawei", 8, 256, "Windows", "black"));
-        notebooks.add(new Notebook("Maibenben", 8, 512, "Linux", "silver"));
-        notebooks.add(new Notebook("ASUS", 16, 512, "Windows", "black"));
+        notebooks.add(new Notebook("Apple MacBook Pro", 16, 512, "macOS", "white"));
+        notebooks.add(new Notebook("Maibenben M545", 8, 256, "Linux", "silver"));
+        notebooks.add(new Notebook("ASUS ExpertBook 15", 16, 1000, "Windows", "white"));
+        notebooks.add(new Notebook("ASUS Vivobook Go", 8, 256, "Windows", "black"));
+        notebooks.add(new Notebook("Apple MacBook Air", 16, 1000, "macOS", "silver"));
+        notebooks.add(new Notebook("Lenovo ThinkPad X1", 16, 512, "Linux", "black"));
+        notebooks.add(new Notebook("Huawei MateBook D", 8, 256, "Windows", "black"));
+        notebooks.add(new Notebook("Maibenben X677", 8, 512, "Linux", "silver"));
+        notebooks.add(new Notebook("ASUS TUF Gaming", 16, 512, "Windows", "black"));
 
         Map<Integer, Object> filteringCriteria = requestFilteringCriteria();
         Set<Notebook> result = filteringNotebooks(notebooks, filteringCriteria);
+
+        System.out.println("Найденные результаты:");
+        for (Notebook notebook : result) {
+            System.out.println(notebook.getVendor());
+        }
     } 
 
     private static Map<Integer, Object> requestFilteringCriteria() {
@@ -35,38 +40,32 @@ public class HardwareStore {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Введите цифру, соответствующую необходимому критерию:");
-        System.out.println("1 - производитель");
-        System.out.println("2 - объём оперативной памяти");
-        System.out.println("3 - объём HDD");
-        System.out.println("4 - операционная система");
-        System.out.println("5 - цвет");
+        System.out.println("1 - объём оперативной памяти");
+        System.out.println("2 - объём HDD");
+        System.out.println("3 - операционная система");
+        System.out.println("4 - цвет");
 
         int selectionCriteria = scanner.nextInt();
         switch (selectionCriteria) {
             case 1:
-                System.out.println("Введите производителя:");
-                String vendor = scanner.next();
-                criteries.put(1, vendor);
-                break;
-            case 2:
                 System.out.println("Введите минимальное значение объёма оперативной памяти:");
                 int ram = scanner.nextInt();
-                criteries.put(2, ram);
+                criteries.put(1, ram);
                 break;
-            case 3:
+            case 2:
                 System.out.println("Введите минимальное значение объёма HDD:");
                 int volumeHDD = scanner.nextInt();
-                criteries.put(3, volumeHDD);
+                criteries.put(2, volumeHDD);
                 break;
-            case 4:
+            case 3:
                 System.out.println("Введите операционную систему:");
                 String os = scanner.next();
-                criteries.put(4, os);
+                criteries.put(3, os);
                 break;
-            case 5:
+            case 4:
                 System.out.println("Введите цвет:");
                 String color = scanner.next();
-                criteries.put(5, color);
+                criteries.put(4, color);
                 break;   
             default:
                 System.out.println("Неверный выбор критерия");
@@ -87,26 +86,21 @@ public class HardwareStore {
 
                 switch (criteria) {
                     case 1:
-                        if (notebook.getVendor().equals(value)) {
-                            passesCondition = false;
-                        }
-                        break;
-                    case 2:
                         if (notebook.getRam() < (int) value) {
                             passesCondition = false;
                         }
                         break;
-                    case 3:
+                    case 2:
                         if (notebook.getVolumeHDD() < (int) value) {
                             passesCondition = false;
                         }
                         break;
-                    case 4:
+                    case 3:
                         if (notebook.getOs().equals(value)) {
                             passesCondition = false;
                         }
                         break;            
-                    case 5:
+                    case 4:
                         if (notebook.getColor().equals(value)) {
                             passesCondition = false;
                         }
