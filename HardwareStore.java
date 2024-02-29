@@ -38,6 +38,36 @@ public class HardwareStore {
         System.out.println("4 - операционная система");
         System.out.println("5 - цвет");
 
+        switch (selectionCriteria) {
+            case 1:
+                System.out.println("Введите производителя:");
+                String vendor = scanner.next();
+                criteries.put(1, vendor);
+                break;
+            case 2:
+                System.out.println("Введите минимальное значение объёма оперативной памяти:");
+                int ram = scanner.nextInt();
+                criteries.put(2, ram);
+                break;
+            case 3:
+                System.out.println("Введите минимальное значение объёма HDD:");
+                int volumeHDD = scanner.nextInt();
+                criteries.put(3, volumeHDD);
+                break;
+            case 4:
+                System.out.println("Введите операционную систему:");
+                String os = scanner.next();
+                criteries.put(4, os);
+                break;
+            case 5:
+                System.out.println("Введите цвет:");
+                String color = scanner.next();
+                criteries.put(5, color);
+                break;   
+            default:
+                break;
+        }
+
     }
 }
 
