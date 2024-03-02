@@ -31,9 +31,9 @@ public class HardwareStore {
 
         System.out.println("Найденные результаты:");
         for (Notebook notebook : result) {
-            System.out.println(notebook.getVendor());
+            System.out.println(notebook);
         }
-    } 
+    }
 
     private static Map<Integer, Object> requestFilteringCriteria() {
         Map<Integer, Object> criteries = new HashMap<>();
@@ -44,6 +44,7 @@ public class HardwareStore {
         System.out.println("2 - объём HDD");
         System.out.println("3 - операционная система");
         System.out.println("4 - цвет");
+        System.out.print("Ожидаем ввод цифры: ");
 
         int selectionCriteria = scanner.nextInt();
         switch (selectionCriteria) {
@@ -66,7 +67,7 @@ public class HardwareStore {
                 System.out.println("Введите цвет:");
                 String color = scanner.next();
                 criteries.put(4, color);
-                break;   
+                break;
             default:
                 System.out.println("Неверный выбор критерия");
                 break;
@@ -96,27 +97,25 @@ public class HardwareStore {
                         }
                         break;
                     case 3:
-                        if (notebook.getOs().equals(value)) {
+                        if (!notebook.getOs().equals(value)) {
                             passesCondition = false;
                         }
-                        break;            
+                        break;
                     case 4:
-                        if (notebook.getColor().equals(value)) {
+                        if (!notebook.getColor().equals(value)) {
                             passesCondition = false;
                         }
-                        break;   
+                        break;
                     default:
                         passesCondition = false;
                         break;
                 }
-                
             }
             if (passesCondition) {
                 result.add(notebook);
             }
         }
         return result;
-
     }
 }
 
@@ -127,7 +126,6 @@ class Notebook {
     private String os;
     private String color;
 
-
     public Notebook(String vendor, int ram, int volumeHDD, String os, String color) {
         this.vendor = vendor;
         this.ram = ram;
@@ -135,42 +133,33 @@ class Notebook {
         this.os = os;
         this.color = color;
     }
+
     public String getVendor() {
         return vendor;
     }
-    public void setVendor(String vendor) {
-        this.vendor = vendor;
-    }
+
     public int getRam() {
         return ram;
     }
-    public void setRam(int ram) {
-        this.ram = ram;
-    }
+
     public int getVolumeHDD() {
         return volumeHDD;
     }
-    public void setVolumeHDD(int volumeHDD) {
-        this.volumeHDD = volumeHDD;
-    }
+
     public String getOs() {
         return os;
     }
-    public void setOs(String os) {
-        this.os = os;
-    }
+
     public String getColor() {
         return color;
-    }
-    public void setColor(String color) {
-        this.color = color;
     }
 
     @Override
     public String toString() {
-        return "Notebook [vendor=" + vendor + ", ram=" + ram + ", volumeHDD=" + volumeHDD + ", os=" + os + ", color="
-                + color + "]";
+        return "Notebook [" + vendor + ", RAM=" + ram + ", HDD=" + volumeHDD + ", OS:" + os + ", " + color + "]";
+        // return "Notebook: " + vendor;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -180,36 +169,15 @@ class Notebook {
         if (getClass() != obj.getClass())
             return false;
         Notebook other = (Notebook) obj;
-        if (vendor == null) {
-            if (other.vendor != null)
-                return false;
-        } else if (!vendor.equals(other.vendor))
-            return false;
-        if (ram != other.ram)
-            return false;
-        if (volumeHDD != other.volumeHDD)
-            return false;
-        if (os == null) {
-            if (other.os != null)
-                return false;
-        } else if (!os.equals(other.os))
-            return false;
-        if (color == null) {
-            if (other.color != null)
-                return false;
-        } else if (!color.equals(other.color))
-            return false;
-        return true;
+        return other.vendor.equals(vendor) &&
+                other.os.equals(os) &&
+                other.color.equals(color) &&
+                other.ram == ram &&
+                other.volumeHDD == volumeHDD;
     }
+
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((vendor == null) ? 0 : vendor.hashCode());
-        result = prime * result + ram;
-        result = prime * result + volumeHDD;
-        result = prime * result + ((os == null) ? 0 : os.hashCode());
-        result = prime * result + ((color == null) ? 0 : color.hashCode());
-        return result;
+        return Objects.hash(vendor, ram, volumeHDD, os, color);
     }
 }
